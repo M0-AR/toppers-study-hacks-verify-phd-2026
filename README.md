@@ -10,7 +10,9 @@
 
 ![Demo — benchmark run passing 7/7](docs/assets/demo.gif)
 
-**📋 CEO summary (30 seconds):** this lab converts a popular five-step exam playbook into **7 runnable checks**. Verified result: **retrieval beats rereading, spaced beats massed (+21 pp), easy-first triage beats raw speed, elimination-guessing is +EV**. One command reproduces everything: `docker compose up benchmark`. Start as a beginner below — finish as the person who can explain *why* each tactic works. **🌐 Live interactive site:** enable GitHub Pages (Settings → Pages → `main` → `/docs`) and open `https://<user>.github.io/<repo>/` — or just open `preview.html`.
+**📋 CEO summary (30 seconds):** this lab converts a popular five-step exam playbook into **7 runnable checks**. Verified result: **retrieval beats rereading, spaced beats massed (+21 pp), easy-first triage beats raw speed, elimination-guessing is +EV**. One command reproduces everything: `docker compose up benchmark`. Start as a beginner below — finish as the person who can explain *why* each tactic works.
+
+**🌐 Live interactive site (click after enabling Pages below):** [home `/`](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/) · [lab `/preview.html`](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/preview.html) · [mirror `/docs/preview.html`](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/docs/preview.html) — or just open `preview.html` locally.
 
 ---
 
@@ -209,13 +211,39 @@ ev_guess(1/3)      # +0.67 after eliminating one option
 
 ## 🌐 GitHub Pages — put this repo on the web
 
-1. Push this folder to GitHub (default branch `main`).
+1. Push this folder to GitHub (default branch `main`) — already done for `M0-AR/toppers-study-hacks-verify-phd-2026`.
 2. Open **Settings → Pages**. Under **Build and deployment → Source** choose **Deploy from a branch**.
-3. Select branch `main` and folder `/docs`, Save. Your site appears at `https://<user>.github.io/<repo>/` within a minute.
+3. Select branch `main` and folder `/docs`, Save. Within ~1–2 minutes the Actions run "pages build and deployment" goes green.
 4. Prefer CI deploys? Keep `.github/workflows/pages.yml` (static upload of `docs/` — no build step, pure HTML + PNG + GIF).
 5. Custom domain (optional): add your domain in `docs/CNAME`, then point DNS as Pages instructs.
 
-`preview.html` (repo root) is the same page for local double-click use; `docs/index.html` is what Pages serves.
+**Click the live lab:**
+
+| Entry | URL |
+|---|---|
+| Home `/` | [m0-ar.github.io/toppers-study-hacks-verify-phd-2026/](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/) |
+| Lab `/preview.html` | [m0-ar.github.io/toppers-study-hacks-verify-phd-2026/preview.html](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/preview.html) |
+| Mirror `/docs/preview.html` | [m0-ar.github.io/toppers-study-hacks-verify-phd-2026/docs/preview.html](https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026/docs/preview.html) |
+
+**Which links work depends on the source setting** (URLs mirror the repo path *under the source*). This repo ships mirrors so every setting resolves:
+
+| `/` | `/preview.html` | `/docs/preview.html` | Meaning |
+|---|---|---|---|
+| 200 | 200 | 404 | source = `/docs` ✅ (recommended) |
+| 200 | 200 | 200 | source = `/` (root) ✅ (all mirrors resolve) |
+| 404 | 404 | 404 | Pages off / still building / wrong branch |
+
+Diagnose in 10 seconds (no login):
+
+```bash
+BASE="https://m0-ar.github.io/toppers-study-hacks-verify-phd-2026"
+for p in "" "preview.html" "docs/preview.html"; do
+  printf "%s -> " "/$p"
+  curl -s -o /dev/null -w "%{http_code}\n" "$BASE/$p"
+done
+```
+
+Notes: the entry file must sit at the top of the chosen source (`docs/index.html` for `/docs`, root `index.html` redirect for `/`); `.nojekyll` exists in **both** `docs/` and root so static assets are never filtered; all asset paths are relative (`assets/…` under `docs/`, `docs/assets/…` at root) so project-Pages subpaths work. Local use needs nothing: just double-click `preview.html`.
 
 ---
 
