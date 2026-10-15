@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Input to Output — Interactive Lab & Beginner-to-Pro Guide</title>
+<meta name="description" content="Turn study hours into rank: 7 runnable experiments verify a five-step competitive-exam system. Beginner guide, live charts, and a 10-question interactive quiz.">
+<style>
+:root{--bg:#0f172a;--bg2:#111c34;--card:#1e293b;--line:#334155;--txt:#e2e8f0;--mut:#94a3b8;--acc:#7dd3fc;--grn:#6ee7b7;--ylw:#fcd34d;--red:#fda4af;--vio:#c4b5fd}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#0b1226);color:var(--txt);line-height:1.6}
+a{color:var(--acc)}header.hero{padding:56px 20px 30px;text-align:center;background:radial-gradient(700px 260px at 50% -60px,#1d4ed855,transparent)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 14px;color:var(--mut);font-size:13px;margin:4px}
+h1{font-size:clamp(28px,5vw,52px);margin:14px 0 8px;line-height:1.12}
+.sub{color:var(--mut);max-width:860px;margin:0 auto;font-size:clamp(15px,2.4vw,19px)}
+.cta{margin:22px 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--txt);padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:600}
+.btn.primary{background:#2563eb;border-color:#2563eb;color:#fff}
+main{max-width:1060px;margin:0 auto;padding:10px 20px 80px}
+section.card{background:rgba(30,41,59,.75);border:1px solid var(--line);border-radius:16px;padding:24px;margin:18px 0}
+h2{margin-top:0;font-size:26px}h3{color:var(--acc)}table{width:100%;border-collapse:collapse;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{background:#0b1530}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0f2138}
+.kpi{font-size:30px;font-weight:800}.mut{color:var(--mut)}.small{font-size:13px}
+img.chart{width:100%;border-radius:12px;border:1px solid var(--line);background:#fff}
+code.inline{background:#0b1530;border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+pre{background:#0b1530;border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto}
+.quiz-q{border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;background:#0f2138}
+.quiz-q button{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#16263f;color:var(--txt);cursor:pointer}
+.quiz-q button:hover{border-color:var(--acc)}
+.quiz-q button.correct{border-color:var(--grn);background:#052e22}
+.quiz-q button.wrong{border-color:var(--red);background:#3b0a12}
+.explain{display:none;margin-top:10px;border-left:3px solid var(--acc);padding:8px 12px;color:var(--txt);background:#0b1530;border-radius:0 8px 8px 0}
+.steps{display:none;margin-top:8px;color:var(--mut)}.lvl{display:inline-block;font-size:12px;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.lvl.s{background:#134e4a;color:var(--grn)}.lvl.p{background:#1e3a8a;color:#bfdbfe}.lvl.pro{background:#4c1d95;color:var(--vio)}
+#score{position:sticky;top:0;background:#0b1530;border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;gap:16px;justify-content:center;z-index:5}
+footer{color:var(--mut);text-align:center;padding:30px;font-size:13px}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:10px 0}
+.flow span{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#0b1530}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:#0f2138}
+summary{cursor:pointer;font-weight:600}
+@media (max-width:640px){section.card{padding:16px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div><span class="pill">Reproducible benchmark</span><span class="pill">7/7 experiments PASS</span><span class="pill">NEET / JEE 2023–2025</span><span class="pill">MIT</span></div>
+<h1>From Input to Output<br>Turn study hours into rank.</h1>
+<p class="sub"><strong>30-second version for decision-makers:</strong> this lab converts a popular five-step exam playbook into <strong>7 runnable checks</strong>. Verified result: <strong>retrieval beats rereading, spaced beats massed (+21&nbsp;pp), easy-first triage beats raw speed, elimination-guessing is +EV</strong>. One command reproduces everything: <code class="inline">docker compose up benchmark</code>. Start below as a beginner — finish as the person who can explain <em>why</em> each tactic works.</p>
+<div class="cta">
+<a class="btn primary" href="#beginner">🌱 Start beginner guide</a>
+<a class="btn" href="#quiz">🎯 Take the 10-question quiz</a>
+<a class="btn" href="#reproduce">⚙️ Reproduce in 3 steps</a>
+<a class="btn" href="https://github.com/" target="_blank" rel="noopener">⭐ View on GitHub</a>
+</div>
+<div class="mut small">Live site via GitHub Pages (docs/ folder). Prefer video? See <a href="#demo">60-second demo</a>.</div>
+</header>
+<main>
+<div id="score"><span>✅ Correct: <b id="c">0</b></span><span>❌ Review: <b id="w">0</b></span><span>🎯 Level: <b id="lvl">Scratch</b></span></div>
+
+<section class="card" id="beginner">
+<h2>🌱 Beginner guide — read this and you are a professional</h2>
+<p><strong>Let's work this out in a step-by-step way to be sure we have the right answer.</strong> Imagine your preparation as a pipeline with five valves. Most students open only the first valve (learn more). Rank comes from opening all five, especially the last ones.</p>
+<div class="flow"><span>1️⃣ Mindset + Plan</span>→<span>2️⃣ Fundamentals</span>→<span>3️⃣ Problem solving</span>→<span>4️⃣ Output (speed × strike × selection)</span>→<span>5️⃣ Phase plan</span></div>
+<h3>Step 0 — Measure today (15 minutes)</h3>
+<p>Take one past paper under exam rules. Compute 5 numbers with <code class="inline">src/metrics.py</code>: <strong>speed</strong> = time ÷ attempted, <strong>effective speed</strong> = time ÷ correct, <strong>strike rate</strong> = correct ÷ attempted, <strong>M/T</strong> = marks ÷ minute per subject, <strong>success gap</strong> = cutoff − scored. Write them down. You cannot improve what you do not measure.</p>
+<h3>Step 1 — Learn in levels (L1 → L2 → L3)</h3>
+<p>Never jump to hard problems first. Solve easy ones fully, then medium, then hard — consulting theory between rounds. Draw the diagram <em>before</em> writing equations (physics). Work symbol-first, plug numbers last. Two spaced attempts before peeking at solutions.</p>
+<h3>Step 2 — Space and retrieve</h3>
+<p>Review after ~1 day, ~7 days, ~30 days (one valid ladder of the 10–20% rule: gap ≈ 10–20% of the horizon). Study 45–60 minutes, break 5–10 minutes (walk, water, stretch — not feeds). Revise before sleep; learn new things when fresh. Replace rereading with self-testing: close the book and recall.</p>
+<h3>Step 3 — Triage the paper</h3>
+<p>Browse 5–10 minutes. Do easy + medium first (they are ~82% of items and ~80% of marks). Mark hard ones “try again” and return with leftover 10–15% time. Batch-mark answers per section. Under +4/−1, killing even one option makes guessing +EV (breakeven p = 20%). Skipping beyond that controls variance, not expectation.</p>
+<h3>Step 4 — Analyse every mock 1–2 hours</h3>
+<p>Classify each miss: <strong>calculation</strong> (more timed reps), <strong>confusion</strong> (relearn concept), <strong>coverage</strong> (fill topic). Classify each skip: time / confusion / coverage. Track M/T per subject; move ~10 minutes from lowest to highest M/T and re-test.</p>
+<details><summary>Worked mini-example (book table, reproduced exactly)</summary>
+<p>200 questions, 174 attempted, 136 correct, 150 minutes → speed <strong>51.72 s/q</strong>, effective <strong>66.18 s/correct</strong>, strike <strong>78.16%</strong>, net <strong>506</strong> under +4/−1. Run <code class="inline">python experiments/exp04_speed_strike_selection.py</code> to see it recomputed.</p></details>
+</section>
+
+<section class="card" id="demo">
+<h2>🎬 60-second demo</h2>
+<p class="mut">Looping terminal run (scripted, regenerable). Full video script lives in <code class="inline">docs/assets/demo.tape</code>; rendered loop below.</p>
+<img src="docs/assets/demo.gif" alt="Looping demo of the 7-experiment benchmark passing" style="width:100%;border-radius:12px;border:1px solid var(--line)">
+<p class="small mut">Can't see the animation? The same run is text in <code class="inline">benchmarks/results/summary.json</code>. Short clips (MP4/WebM) can be rendered from the same tape for social posts.</p>
+<h3>What you will see live</h3>
+<div class="grid">
+<div class="tile"><div class="kpi">+21pp</div><div>Spaced 66% → 87% retention at 7 days.</div><img class="chart" src="docs/assets/forgetting.png" alt="Spaced vs massed retention bar chart"></div>
+<div class="tile"><div class="kpi">256 vs 113</div><div>Easy-first vs linear mean net (hard-first: 30).</div><img class="chart" src="docs/assets/strategy.png" alt="Easy-first beats linear beats hard-first"></div>
+<div class="tile"><div class="kpi">+EV</div><div>Blind +0.25, elim-1 +0.67, elim-2 +1.50.</div><img class="chart" src="docs/assets/guessing.png" alt="Guessing expected value chart"></div>
+<div class="tile"><div class="kpi">36/46/18</div><div>Verified NEET mix vs book 25/60/15.</div><img class="chart" src="docs/assets/difficulty.png" alt="Book vs verified difficulty mix"></div>
+</div>
+</section>
+
+<section class="card" id="features">
+<h2>✨ Features — everything in one place</h2>
+<div class="grid">
+<div class="tile"><strong>📏 Output metrics engine</strong><br><span class="mut">speed, effective speed, strike rate, M/T, success gap, net score. Pure functions + unit tests.</span></div>
+<div class="tile"><strong>🧠 Spacing & forgetting lab</strong><br><span class="mut">Ebbinghaus-shape demo, 7-day retention table, 10–20% gap planner, effect-size → U3 converter.</span></div>
+<div class="tile"><strong>📝 Paper-triage simulator</strong><br><span class="mut">Linear vs easy-first vs hard-first under a 180-min budget with verified time/success priors.</span></div>
+<div class="tile"><strong>🎲 Guessing calculator</strong><br><span class="mut">Closed-form + 200k-trial Monte Carlo for +4/−1. Breakeven p = 20%.</span></div>
+<div class="tile"><strong>📊 Exam-telemetry audit</strong><br><span class="mut">NEET/JEE 2023–2025 difficulty + cutoff snapshot, book-vs-verified diff.</span></div>
+<div class="tile"><strong>👥 Cohort check</strong><br><span class="mut">Public student data (live fetch or labelled synthetic fallback). Honest tie reported.</span></div>
+<div class="tile"><strong>🐳 One-command reproduce</strong><br><span class="mut"><code class="inline">docker compose up benchmark</code> — sequential, no keys, JSON evidence.</span></div>
+<div class="tile"><strong>🌐 This page + quiz</strong><br><span class="mut">Works offline, deployable to GitHub Pages from <code class="inline">docs/</code>.</span></div>
+</div>
+<h3>User stories — who is this for?</h3>
+<table><tr><th>You are…</th><th>Do this</th><th>You get</th></tr>
+<tr><td>Student, 3 months to exam</td><td>Run beginner steps 0–4 + weekly mock</td><td>A personal M/T table and a triage order that fits <em>your</em> speed</td></tr>
+<tr><td>Teacher / coach</td><td>Use the quiz + triage simulator in class</td><td>A 45-min lesson where students <em>feel</em> why easy-first wins</td></tr>
+<tr><td>Parent</td><td>Read CEO summary + sleep/break rules</td><td>How to help without adding pressure (routine, sleep, logistics)</td></tr>
+<tr><td>Researcher (PhD track)</td><td>Read report §6 falsifiers, pre-register RCT</td><td>Five killable hypotheses (P1–P5) with gates</td></tr>
+<tr><td>Contributor</td><td>Regenerate assets, add a year of telemetry</td><td>CI-green PR with new JSON evidence</td></tr></table>
+</section>
+
+<section class="card" id="quiz">
+<h2>🎯 Interactive quiz — from scratch to pro (10 questions)</h2>
+<p class="mut">Answer each one. You get the <strong>right answer, why, and the step-by-step</strong> immediately — that instant feedback <em>is</em> the study technique. Levels: 🌱 Scratch (1–3) → 🛠 Practitioner (4–7) → 🏆 Pro (8–10).</p>
+<div id="quizbox"></div>
+<div class="tile" id="final" style="display:none"><strong id="ftitle"></strong><p id="fmsg" class="mut"></p><button class="btn primary" onclick="location.reload()">↻ Retake quiz</button></div>
+</section>
+
+<section class="card" id="reproduce">
+<h2>⚙️ Reproduce everything in 3 steps</h2>
+<pre>python -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -r requirements.txt
+pytest -q &amp;&amp; python benchmarks/run_all.py &amp;&amp; cat benchmarks/results/summary.json</pre>
+<p>Docker: <code class="inline">docker compose up benchmark</code> (services: <code class="inline">benchmark</code> one-shot gate, <code class="inline">lab</code> interactive shell). Regenerate visuals: <code class="inline">python docs/assets/generate_assets.py</code>. Data audit: <code class="inline">python benchmarks/run_all.py --audit-data</code>.</p>
+<details><summary>Enable GitHub Pages for this site (2026 flow)</summary>
+<ol><li>Push this repo to GitHub (default branch <code class="inline">main</code>).</li><li>Open <strong>Settings → Pages</strong>. Under <strong>Build and deployment → Source</strong> choose <strong>Deploy from a branch</strong>.</li><li>Select branch <code class="inline">main</code> and folder <code class="inline">/docs</code>, Save. Your site appears at <code class="inline">https://&lt;user&gt;.github.io/&lt;repo&gt;/</code> within a minute.</li><li>Optional (CI deploy): keep <code class="inline">.github/workflows/pages.yml</code> (static upload of <code class="inline">docs/</code>). No build step needed — pure static HTML + PNG + GIF.</li><li>Custom domain (optional): add <code class="inline">docs/CNAME</code> with your domain, then point DNS as Pages instructs.</li></ol></details>
+</section>
+
+<section class="card" id="report">
+<h2>📄 Full research report (preserved, uncut)</h2>
+<p class="mut">The complete publishable-grade write-up lives in <code class="inline">README.md</code> (abstract → methods → 7 experiments → 5 hidden patterns P1–P5 → zero-to-hero protocol → threats/limits → references). This page is the friendly front door; the README is the citable record. Key numbers: retrieval g≈0.50 / spaced-retrieval g=0.74 / overall mean g=0.56 (169,179 learners); interleaving medians +50%/+125% (physics); NEET verified mix ~36/46/18; qualifying cutoffs percentile-based 117–162/720 (volatile).</p>
+<p><a class="btn" href="../README.md">📖 Open README.md</a> <a class="btn" href="../papers/REFERENCES.bib">📚 References (BibTeX)</a></p>
+</section>
+</main>
+<footer>MIT · No book text reproduced — summaries + re-implemented formulas only · Numbers trace to in-repo evidence JSON · Built from scratch, reproducible with one command.</footer>
+<script>
+const Q=[
+{lvl:"s",lvlName:"Scratch",q:"1. What should you measure FIRST before trying to study harder?",opts:["Total hours studied last month","Speed, strike rate, M/T and success gap on one timed past paper","Number of books owned","Your friends' scores"],a:1,
+why:"You cannot improve what you do not measure. One proctored paper gives speed (time÷attempted), strike (correct÷attempted), marks-per-minute and gap-to-cutoff — your personal baseline.",
+steps:"Step 1: sit one 180-min paper, exam rules. Step 2: count attempted/correct. Step 3: divide. That's your dashboard for every later decision."},
+{lvl:"s",lvlName:"Scratch",q:"2. Rereading feels fluent. What does the evidence say vs self-testing a week later?",opts:["Rereading wins slightly","They tie","Self-testing wins clearly (e.g. 35% vs 4%; 80% vs 36% in classic demos; meta g≈0.50)","Highlighting wins"],a:2,
+why:"Retrieval beats restudying across ages and materials. Fluency while rereading is an illusion — close the book and recall instead.",
+steps:"Read once → close book → write what you remember → check → repeat the gaps. That loop is the technique."},
+{lvl:"s",lvlName:"Scratch",q:"3. How long can you hold peak focus before a real break helps?",opts:["8 hours straight","45–60 minutes, then 5–10 minutes of movement/water","5 minutes study, 2 hours phone","It doesn't matter"],a:1,
+why:"Retention sags in one unbroken 3-hour block. Split it into ~3×60-min sessions with short restorative breaks — more high-quality beginnings and endings.",
+steps:"Set an hourly alarm. When it rings, stand, stretch, sip water, note what you covered (1–10 productivity), resume."},
+{lvl:"p",lvlName:"Practitioner",q:"4. Crammed (massed) vs spaced review — retention after 7 days?",opts:["Massed wins","Tie","Spaced wins ~87% vs ~66% (+21 pp)","Spacing only matters after a year"],a:2,
+why:"With equal study amount, spacing wins. Practical optimum is often around 8h±4h gaps for daily rhythms; scale gap to horizon (10–20% rule).",
+steps:"Learn day 0 → quick recall day 1 → wider test day 7 → monthly sweep. Gaps ≈ 10–20% of how long you must remember."},
+{lvl:"p",lvlName:"Practitioner",q:"5. Mixing subjects (interleaving) vs one subject all day for problem-solving?",opts:["Blocking always wins","Interleaving improves transfer: physics medians +50% and +125% on novel harder tests","Mixing only helps vocabulary","No difference ever found"],a:1,
+why:"Alternating forces discrimination (which method fits?) — the exact skill exams test. It feels harder, which is why students misjudge it.",
+steps:"2–3h physics → 2h chemistry → switch. Same total time, different order. Test on unseen problems, not repeats."},
+{lvl:"p",lvlName:"Practitioner",q:"6. Book table: 200 Q, 174 attempted, 136 correct, 150 min. Strike rate?",opts:["51.7%","66.2%","78.2% (136÷174)","87.0%"],a:2,
+why:"Strike = correct ÷ attempted = 136/174 ≈ 78.2%. Speed = 9000s÷174 ≈ 51.7 s/q; effective = 9000÷136 ≈ 66.2 s/correct; net (+4/−1) = 506.",
+steps:"Attempted first, then divide. Keep the three numbers side by side — speed without strike is vanity."},
+{lvl:"p",lvlName:"Practitioner",q:"7. Under +4/−1, when is guessing mathematically worth it?",opts:["Never guess","Only if 100% sure","Worth it once win-chance exceeds 20% — killing even 1 option (≈33%) is +EV","Only in physics"],a:2,
+why:"EV = 4p − (1−p). Breakeven p = 1/5 = 20%. Blind (25%) is already +0.25; elim-1 ≈ +0.67; elim-2 = +1.50. Skipping beyond that is variance control.",
+steps:"Eliminate first, estimate p honestly, guess iff p>20%. Track calibration (stated confidence vs hit rate)."},
+{lvl:"pro",lvlName:"Pro",q:"8. Verified NEET mix is ~36/46/18 (not 25/60/15). Best implication?",opts:["Ignore easy questions","Secure easy+medium first — ~82% of items carry ~80% of marks; hard decides rank","Do hard first to impress","Attempt in given order always"],a:1,
+why:"Selection dominates speed in simulation (easy-first net 256 vs linear 113 vs hard-first 30). Easy+medium decide selection; hard decides merit.",
+steps:"Browse 5–10 min → budget per section → easy+medium sweep → TA-mark hard → revisit with 10–15% reserve."},
+{lvl:"pro",lvlName:"Pro",q:"9. Cutoffs: what mechanism actually sets them?",opts:["Fixed 65% every year","Percentile-based and volatile (recent qualifying 117–162/720); admission cutoffs far higher","Teacher's mood","Alphabetical"],a:1,
+why:"Percentile rules (e.g. 50th UR/EWS, 40th reserved) plus paper difficulty and cohort strength move the line yearly. Plan for rank, not a magic percent.",
+steps:"Track M/T per subject and success gap by topic; shift ~10 min from lowest to highest M/T and re-test."},
+{lvl:"pro",lvlName:"Pro",q:"10. Best use of the last 7–10 days?",opts:["Learn 5 new chapters","No new material: keyword cards, body-clock-matched mocks, logistics + sleep","Solve only the hardest olympiad items","Stop sleeping to gain hours"],a:1,
+why:"Consolidation → rapid review: freeze sources, self-recite/peer-teach, mocks at exam hours with −15–20 min handicap, tickets/pens/centre/sleep ready.",
+steps:"Cards + recall + one daily mock at exam time + early night. Morning-of: solve 3–4 mastered items to prime thinking mode."}
+];
+let ci=0,cc=0,ww=0;
+const box=document.getElementById('quizbox');
+function levelOf(i){return i<3?["s","Scratch"]:i<7?["p","Practitioner"]:["pro","Pro"];}
+function render(){
+const item=Q[ci];const[cls,name]=levelOf(ci);
+box.innerHTML=`<div class="quiz-q"><span class="lvl ${cls}">${cls==="s"?"🌱":cls==="p"?"🛠":"🏆"} ${name} · ${ci+1}/10</span><p><strong>${item.q}</strong></p>${item.opts.map((o,i)=>`<button onclick="answer(${i})">${o}</button>`).join("")}<div class="explain" id="ex"></div><div class="steps" id="st"></div><div id="nx"></div></div>`;
+}
+function answer(i){
+const item=Q[ci];const btns=box.querySelectorAll('button');const ex=document.getElementById('ex');const st=document.getElementById('st');const nx=document.getElementById('nx');
+btns.forEach(b=>b.disabled=true);
+if(i===item.a){btns[i].classList.add('correct');cc++;ex.innerHTML=`✅ <strong>Correct.</strong> ${item.why}`;}
+else{btns[i].classList.add('wrong');btns[item.a].classList.add('correct');ww++;ex.innerHTML=`❌ <strong>Not quite — right answer highlighted.</strong> ${item.why}`;}
+ex.style.display='block';st.innerHTML=`<strong>Step-by-step:</strong> ${item.steps}`;st.style.display='block';
+document.getElementById('c').textContent=cc;document.getElementById('w').textContent=ww;
+document.getElementById('lvl').textContent=ci<3?"Scratch":ci<7?"Practitioner":"Pro";
+nx.innerHTML=ci<9?`<button class="btn primary" onclick="next()">Next →</button>`:`<button class="btn primary" onclick="finish()">See my level 🏁</button>`;
+}
+function next(){ci++;render();}
+function finish(){
+box.style.display='none';const f=document.getElementById('final');f.style.display='block';
+let t,m;if(cc>=9){t="🏆 Pro — you can teach this.";m="You reason like the simulator: triage first, space retrieval, calibrate guesses. Next: pre-register a small RCT on yourself (mock-frequency A/B) or contribute a telemetry year.";}
+else if(cc>=6){t="🛠 Practitioner — exam-ready habits.";m="Lock the loop: weekly mock → 1–2h miss autopsy (calculation/confusion/coverage) → M/T reallocation. Re-take to reach Pro.";}
+else{t="🌱 Scratch — strong start.";m="Re-read the beginner guide above, then retake. Focus Q2 (testing), Q4 (spacing), Q7 (guessing) — those three carry the most marks per minute.";}
+document.getElementById('ftitle').textContent=`${t} — ${cc}/10 correct`;document.getElementById('fmsg').textContent=m;
+}
+render();
+</script>
+</body>
+</html>

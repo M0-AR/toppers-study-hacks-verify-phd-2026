@@ -1,0 +1,20 @@
+services:
+  benchmark:
+    build: .
+    container_name: toppers-verify-benchmark
+    volumes:
+      - ./benchmarks/results:/app/benchmarks/results
+      - ./data:/app/data:ro
+    command: python benchmarks/run_all.py
+    mem_limit: 2g
+
+  lab:
+    build: .
+    container_name: toppers-verify-lab
+    volumes:
+      - ./benchmarks/results:/app/benchmarks/results
+      - ./experiments:/app/experiments
+      - ./src:/app/src
+    command: sleep infinity
+    stdin_open: true
+    tty: true

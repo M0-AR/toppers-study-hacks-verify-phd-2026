@@ -1,0 +1,11 @@
+exam,year,easy_pct,medium_pct,hard_pct,notes,source_hint
+NEET,2023,35.3,46.3,18.4,"200 Q analysed; Physics hardest 20% hard","agent-reach websearch: zollege/targetpublications 2025 analyses"
+NEET,2025,37.0,45.0,18.0,"overall moderate-difficult; Bio 28E/42M/20H of 90; Chem 13E/20M/12H of 45","agent-reach websearch: targetpublications NEET 2025 trend"
+JEE-Main-sampled-2025,2025,27.0,60.1,12.9,"599 Q over 8/19 shifts: 162E/360M/77H; ~20% numerical; hard 12-13% vs 2024","agent-reach websearch: lumineet 2025 shift analysis"
+SATHEE-15yr-avg,2009-2024,28.0,52.0,20.0,"approx from success-rate bands; Easy 85.7%@1.8m Medium 62.3%@3.5m Hard 34.8%@5.8m VeryHard 12.4%@8.4m; Easy 28% marks Medium 52% Hard 17% VHard 3%","agent-reach websearch: sathee.iitk.ac.in PYQ analytics"
+NEET-qualifying-cutoff-General,2024,,,,"720-162 (50th pct; highest ever; easy paper)","agent-reach websearch: unacademy/aspirant analyses"
+NEET-qualifying-cutoff-General,2023,,,,"720-137","agent-reach websearch: unacademy/aspirant analyses"
+NEET-qualifying-cutoff-General,2025,,,,"686-144 (top 686 after revised key; down 18 vs 2024; tougher paper)","agent-reach websearch: unacademy/aspirant analyses"
+NEET-qualifying-cutoff-General,2022,,,,"715-117 (lowest recent; tougher paper)","agent-reach websearch: unacademy/aspirant analyses"
+JEE-Main-qualifying-General-percentile,2024,,,,"93.23 (vs 90.77 in 2023, 88.4 in 2022)","agent-reach websearch: financial express JEE analysis"
+BOOK-CLAIM, combined,25.0,60.0,15.0,"book p.93: Easy ~25% Average ~60% Difficult ~15%; cutoff 62-67% (JEE 40-50%)","Avinash Agarwal Toppers Study Hacks STEP4/Tips chapters (user-supplied text)"
